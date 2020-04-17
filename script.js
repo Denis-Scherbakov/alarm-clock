@@ -29,6 +29,8 @@
 // alarmHours() - возвращает часы, установленные на будильнике
 // getCurrentMode() - возвращает текущий режим (alarm | clock | к)
 
+// test-test
+
 const modes = {
   bell: 'bell',
   alarm: 'alarm',
