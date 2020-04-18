@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alarm clock</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alarm clock</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Alarm clock</h1>
-    <div class='wrapper'></div>
-    <script src="script.js"></script>
-    <script src="tests.js"></script>
+  <section class="clocks">
+    <div class="wrapper wrapper__clock">
+      <span id='hours' class="clock__digit">13</span>
+      <span>:</span>
+      <span id="minutes" class="clock__digit">37</span>
+      <span>:</span>
+      <span id="seconds" class="clock__digit">42</span>     
+    </div>
+
+    <div class="wrapper wrapper__alarm hide">
+      <span id='alarmHours' class="hours">13</span>
+      <span>:</span>
+      <span id="alarmMinutes" class="minutes">37</span>  
+    </div>
+  </section>
+
+  <div class="button-wrapper">
+    <button type="button" id="hoursButton">H</button>
+    <button type="button" id="minutesButton">M</button>
+    <button type="button" id="modeButton">Mode</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="ui.js"></script>
+  <script src="clock-api-info.js"></script>
 </body>
 </html>

@@ -1,4 +1,60 @@
 body {
+  background-color: rgb(129, 98, 158);
+  color: #EBC036;
+  font-family: 'Wallpoet', cursive;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.clocks {
+  margin: auto;
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: black 3px solid;
+  width: 700px;
+  height: 150px;
   background-color: #333;
-  color: white;
+  color: lawngreen;
+}
+
+.clock__digit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  margin: 0;
+}
+
+.clock__digit:last-child {
+  justify-content: flex-start;
+}
+
+span {
+  font-size: 100px;
+  margin-left: 10px;
+}
+
+.button-wrapper {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 200px;
+}
+
+button {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  font-size: 30px;
+  background-color: rgb(192, 149, 248);
+}
+
+.wrapper.hide {
+  display: none;
 }

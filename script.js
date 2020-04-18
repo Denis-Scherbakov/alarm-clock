@@ -23,13 +23,12 @@
 // tick() - при вызове увеличивает время на одну минуту и, если нужно, активирует звонок будильника
 // isAlarmOn() - показывает включен ли режим будильника
 // isAlarmTime() - возвращает true, если время на часах совпадает со временем на будильнике
-// minutes() - возвращает минуты, установленные на часах
-// hours() - возвращает часы, установленные на часах
-// alarmMinutes() - возвращает минуты, установленные на будильнике
-// alarmHours() - возвращает часы, установленные на будильнике
-// getCurrentMode() - возвращает текущий режим (alarm | clock | к)
+// minutes - возвращает минуты, установленные на часах
+// hours - возвращает часы, установленные на часах
+// alarmMinutes - возвращает минуты, установленные на будильнике
+// alarmHours - возвращает часы, установленные на будильнике
+// currentMode - возвращает текущий режим (alarm | clock | к)
 
-// test-test
 
 const modes = {
   bell: 'bell',
@@ -37,34 +36,44 @@ const modes = {
   clock: 'clock'
 };
 
+const time = new Date();
+const currentHours = time.getHours();
+const currentMinutes = time.getMinutes();
+const currentSeconds = time.getSeconds();
+
 class AlarmClock {
-  constructor() {
+  constructor({ hours = currentHours, minutes = currentMinutes, seconds = currentSeconds } = {}) {
     this.time = {
-      clock: { hours: 12, minutes: 0 },
-      alarm: { hours: 6, minutes: 0 }
+      clock: { hours, minutes, seconds },
+      alarm: { hours: 16, minutes: 5 }
     };
     this.mode = modes.clock;
     this.alarmMode = false;
+    this.tickIntervalId = setInterval(() => this.tick(), 1000);
   }
 
-  getCurrentMode() {
-    return this.mode;
-  }
-
-  alarmHours() {
-    return this.time.alarm.hours;
-  }
-
-  alarmMinutes() {
-    return this.time.alarm.minutes;
-  }
-
-  hours() {
+  get hours() {
     return this.time.clock.hours;
   }
 
-  minutes() {
+  get minutes() {
     return this.time.clock.minutes;
+  }
+
+  get seconds() {
+    return this.time.clock.seconds;
+  }
+
+  get alarmHours() {
+    return this.time.alarm.hours;
+  }
+
+  get alarmMinutes() {
+    return this.time.alarm.minutes;
+  }
+
+  get currentMode() {
+    return this.mode;
   }
 
   isAlarmTime() {
@@ -78,9 +87,12 @@ class AlarmClock {
 
   tick() {
     const { clock, alarm } = this.time;
-    if (this.mode === modes.bell) this.mode = modes.clock;
-    clock.minutes = (clock.minutes + 1) % 60;
-    if (clock.minutes === 0) clock.hours = (clock.hours + 1) % 24;
+    if (this.mode === modes.bell && !this.isAlarmTime()) this.mode = modes.clock;
+    clock.seconds = (clock.seconds + 1) % 60;
+    if (clock.seconds === 0) {
+      clock.minutes = (clock.minutes + 1) % 60;
+      if (clock.minutes === 0) clock.hours = (clock.hours + 1) % 24;
+    }
     if (this.isAlarmTime() && this.alarmMode) this.mode = modes.bell;
   }
 
