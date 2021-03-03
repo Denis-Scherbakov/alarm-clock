@@ -10,25 +10,27 @@
   }
 }
 
+iframe {
+  margin: 0 auto;
+}
+
 body {
-  background-color: rgb(129, 98, 158);
-  background-image: url(https://img.zik.ua/original/2019/10/21/228263.jpg?timestamp=-62169987848);
+  /* background-color: rgb(129, 98, 158); */
   background-repeat: no-repeat;
   background-size: 100%;
   color: #EBC036;
   font-family: 'Wallpoet', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.replic {
-  display: flex;
-  align-items: center;
-  height: 80px;
-  width: fit-content;
-  background: #a84909;
-  border-radius: 40px;
-  font-size: 25px;
-  padding: 15px;
-  margin-top: 40px;
+h1 {
+  background-color: black;
+  padding: 10px;
+  font-size: 50px;
+  color: red;
 }
 
 .wrapper {
@@ -125,3 +127,40 @@ button {
   animation-iteration-count: infinite;
 }
 
+.inputHours {
+  position: fixed;
+  top: 100px;
+  left: 100px;
+  width: 160px;
+  height: 100px;
+  font-size: 100px;
+  font-family: 'Wallpoet', cursive;
+  color: lawngreen;
+  border: black 10px solid;
+  background-color: #333;
+}
+
+.inputMinutes {
+  position: fixed;
+  top: 100px;
+  left: 300px;
+  width: 160px;
+  height: 100px;
+  font-size: 100px;
+  font-family: 'Wallpoet', cursive;
+  color: lawngreen;
+  border: black 10px solid;
+  background-color: #333;
+}
+
+
+.input-button-hours {
+  position: fixed;
+  left: 170px;
+}
+
+.exit {
+  width: 30px;
+  height: 30px;
+  border:red 3px solid;
+}

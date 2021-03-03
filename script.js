@@ -4,8 +4,6 @@
 
 // Поведение часов с будильником уже является сложным, поскольку одни и те же входные воздействия (нажатие одних и тех же кнопок) в зависимости от режима инициируют различные действия.
 
-// В программных и программно-аппаратных вычислительных системах сущности со сложным поведением встречаются очень часто. Таким свойством обладают устройства управления, сетевые протоколы, диалоговые окна, персонажи компьютерных игр и многие другие объекты и системы.
-
 // Подведём итог. У нас есть следующие действия:
 
 // Установка времени
@@ -46,7 +44,7 @@ class AlarmClock {
   constructor({ hours = currentHours, minutes = currentMinutes, seconds = currentSeconds } = {}) {
     this.time = {
       clock: { hours, minutes, seconds },
-      alarm: { hours: 16, minutes: 5 }
+      alarm: { hours: 12, minutes: 0 }
     };
     this.mode = modes.clock;
     this.alarmMode = false;
@@ -59,6 +57,10 @@ class AlarmClock {
 
   set minutes(num) {
     this.time.clock.minutes = num;
+  }
+
+  set seconds(num) {
+    this.time.clock.seconds = num;
   }
 
   set alarmHours(num) {
@@ -139,59 +141,4 @@ class AlarmClock {
     this.alarmMode = !this.alarmMode;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

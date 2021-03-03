@@ -1,3 +1,4 @@
+
 const clock = new AlarmClock();
 
 const clocks = document.getElementById('clocks');
@@ -10,6 +11,7 @@ const modeButton = document.getElementById('modeButton');
 const clockWrappers = document.querySelectorAll('.wrapper');
 const clockAlarmHours = document.getElementById('alarmHours');
 const clockAlarmMinutes = document.getElementById('alarmMinutes');
+// const form = document.querySelector('form');
 
 const numToTimeStr = (num) => (num < 10) ? `0${num}` : String(num);
 
@@ -20,8 +22,8 @@ const updateAlarmTime = () => {
 
 const updateTime = () => {
   hours.innerHTML = numToTimeStr(clock.hours);
-  minutes.innerHTML = numToTimeStr(clock.minutes)
-  seconds.innerHTML = numToTimeStr(clock.seconds)
+  minutes.innerHTML = numToTimeStr(clock.minutes);
+  seconds.innerHTML = numToTimeStr(clock.seconds);
 };
 
 const updateClockTime = () => {
@@ -72,23 +74,54 @@ const clockBell = () => {
   }
 };
 
-hours.addEventListener('click', () => {
+const createForm = () => {
   const form = document.createElement('form');
   const input = document.createElement('input');
   const button = document.createElement('button');
   form.append(input, button);
-  document.body.append(form);
+  form.classList.add('form');
+  form.querySelector('button').innerHTML = 'Apply'
+  return { form, input, button };
+};
 
+// console.log(document.getElementsByClassName('form'));
+
+hours.addEventListener('click', () => {
+  const { form, input, button } = createForm();
+  input.classList.add('inputHours');
+  button.classList.add('input-button-hours');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log(input.value);
-    if(input.value >= 0 && input.value < 24 && input.value !== '') {
-      // clock.hours = input.value;
+    if (input.value >= 0 && input.value < 24 && input.value !== '') {
+      clock.hours = Number(input.value); 
     }
+    form.remove();
   });
+  document.body.append(form);
+  form.querySelector('input').focus();
+  form.querySelector('input').setAttribute('value', clock.hours);
+});
+
+minutes.addEventListener('click', () => {
+  const { form, input } = createForm();
+  input.classList.add('inputMinutes');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log(input.value);
+    if (input.value >= 0 && input.value < 60 && input.value !== '') {
+      clock.minutes = Number(input.value);
+      
+    }
+    form.remove();
+  });
+  document.body.append(form);
+  form.querySelector('input').focus();
+  form.querySelector('input').setAttribute('value', clock.minutes);
 });
 
 
+setInterval(updateClockTime, 1000);
 
 
 
@@ -97,245 +130,3 @@ hours.addEventListener('click', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const replaceBodyContent = () => {
-  document.body.innerHTML = Math.random() > 0.5
-    ? '<span class="replic">Шо ты наделал, ЧОРТ?</span>'
-    : '<span class="replic">Ну шо, нэповэзло, да?</span>';
-};
-
-if (Math.random() > 0.5) {
-  document.body.addEventListener('keydown', replaceBodyContent);
-} else {
-  document.body.addEventListener('click', replaceBodyContent);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const replaceBodyContent1 = () => {
-  document.body.innerHTML = Math.random() > 0.5
-    ? '<span class="replic">Шо ты наделал, ЧОРТ?</span>'
-    : '<span class="replic">Ну шо, нэповэзло, да?</span>';
-};
-
-if (Math.random() > 0.5) {
-  document.body.addEventListener('keydown', replaceBodyContent1);
-} else {
-  document.body.addEventListener('click', replaceBodyContent1);
-}
